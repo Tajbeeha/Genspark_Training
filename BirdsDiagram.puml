@@ -1,0 +1,60 @@
+@startuml
+
+package Birds {
+
+    class Bird {
+        +eat()
+        +fly()
+    }
+
+    class Sparrow
+    class Crow
+    class Eagle
+    class Pigeon
+    class Dolphin
+    class Main
+
+    interface FlyingBehaviour
+    interface SaySomething
+
+    class CrowEagleFlyingBehaviour
+    class PigeonSparrowFlyingBehaviour
+
+    ' Inheritance relationships
+    Bird <|-- Sparrow
+    Bird <|-- Crow
+    Bird <|-- Eagle
+    Bird <|-- Pigeon
+    Bird <|-- Dolphin
+
+
+
+
+
+    ' Flying behaviours (assuming they're strategies used by birds)
+    FlyingBehaviour <|.. CrowEagleFlyingBehaviour
+    FlyingBehaviour <|.. PigeonSparrowFlyingBehaviour
+
+    ' Assuming birds use FlyingBehaviour (composition)
+    ' Bird --> FlyingBehaviour
+
+    ' SaySomething used by some birds (e.g., Crow, Parrot?)
+    SaySomething <|.. Crow
+    SaySomething <|.. Pigeon
+    SaySomething <|.. Dolphin
+
+    Eat <|..Dolphin
+    Eat <|..Sparrow
+    Eat <|..Crow
+    Eat <|..Eagle
+
+    Fly <|..Crow
+    Fly <|..Eagle
+    Fly <|..Pigeon
+    Fly <|..Sparrow
+
+
+}
+
+@enduml
+
